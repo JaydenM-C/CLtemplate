@@ -1,0 +1,93 @@
+$if(CL_style)$
+\documentclass[$CL_style$]{clv3}
+$else$
+\documentclass{clv3}
+$endif$
+
+\usepackage[letterpaper]{geometry}
+
+\usepackage{multicol}
+
+\usepackage{xcolor}
+\definecolor{darkblue}{rgb}{0, 0, 0.5}
+
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,citecolor=darkblue, linkcolor=darkblue, urlcolor=darkblue}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage{natbib}
+\bibliographystyle{compling}
+
+$if(issue)$
+\issue{$issue.volume$}{$issue.number$}{$issue.year$}
+$endif$
+
+% Document head
+$if(document_head)$
+  \dochead{$document_head$}
+$endif$
+
+% Running title and running author name
+$if(running_title)$
+\runningtitle{$running_title$}
+$endif$
+
+$if(running_author)$
+\runningauthor{$running_author$}
+$endif$
+
+% Title and author details
+\begin{document}
+
+$if(title)$
+  \title{$title$}
+$endif$
+
+% At least one author name should be specified. Affiliation and address are optional.
+$for(author)$
+  $if(author.contact_address)$
+    \author{$author.name$\thanks{$author.contact_address$}}
+    $if(author.affiliation)$
+      \affil{$author.affiliation$}
+    $endif$
+  $else$
+    \author{$author.name$}
+    $if(author.affiliation)$
+      \affil{$author.affiliation$}
+    $endif$
+  $endif$
+$endfor$
+
+\maketitle
+
+$if(abstract)$
+\begin{abstract}
+$abstract$
+\end{abstract}
+$endif$
+
+$body$
+
+$if(natbib_citations)$
+\begin{multicols}{2}
+$endif$
+
+$if(acknowledgements)$
+\section*{Acknowledgements}\label{acknowledgements}
+\addcontentsline{toc}{section}{Acknowledgements}
+$acknowledgements$
+$endif$
+
+$if(natbib_citations)$
+\bibliography{$bibliography$}
+\end{multicols}
+$else$
+\section*{References}\label{references}
+\addcontentsline{toc}{section}{Acknowledgements}
+
+$endif$
+
+% NB if natbib_citations = false, then the acknowledgements and references sections can be divided into two columns by manually wrapping them in \begin{multicols}{2} and \end{multicols} in the tex file that pandoc generates. Then recompile the tex file in your TeX compiler of choice.
+
+\end{document}

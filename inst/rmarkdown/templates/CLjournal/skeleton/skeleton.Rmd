@@ -1,0 +1,57 @@
+---
+# CL_style sets the layout style for different kinds of documents.
+# Leave blank for standard article. Other options are: bookreview, brief, discussion, pubrec, shortpaper.
+# A 'manuscript' option can be specified on its own or after another option (separated by a comma) for double-spacing.
+CL_style: 
+
+# Issue number
+issue:
+  volume: 
+  number: 
+  year: 
+
+# Depending on the document type, the document header may not appear.
+document_head: 
+
+# Paper title goes here
+title: Computational Linguistics Template
+
+# Currently only one author can be specified. Affiliation and contact fields are optional.
+author:
+  - name: Firstname Lastname
+    affiliation: Esteemed Institution
+    contact_address: Institution address and email contact
+  - name: Second Author
+    affiliation: Another Institution
+    contact_address: Another address and email.
+
+# Running heads appear on odd-numbered pages. running_author should be last name only.
+running_title: Computational Linguistics Template
+running_author: Lastname
+
+output: 
+  pdf_document:
+    template:
+      cl-template-v2.tex
+    keep_tex: true
+  citation_package: natbib
+bibliography: references.bib
+biblio-style: compling.bst
+natbib_citations: true # if false, consider adding 'link-citations: yes' below. 
+#link-citations: yes
+
+abstract: This is a template for the `CLV3` style used by the journal _Computational Linguistics_. Place here an informative abstract of approximately 150-250 words.
+acknowledgements: Thanks to all my fans.
+---
+
+# Introduction
+
+The main body of the paper goes here.
+
+**IF NATBIB_CITATIONS = TRUE, DELETE THE CONTENT BELOW THIS LINE**
+
+\twocolumn
+
+# Acknowledgements
+
+# References
