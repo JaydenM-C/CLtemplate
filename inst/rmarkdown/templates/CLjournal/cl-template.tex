@@ -48,7 +48,6 @@ $if(title)$
   \title{$title$}
 $endif$
 
-% At least one author name should be specified. Affiliation and address are optional.
 $for(author)$
   $if(author.contact_address)$
     \author{$author.name$\thanks{$author.contact_address$}}
@@ -86,7 +85,5 @@ $endif$
 
 \end{multicols}
 $endif$
-
-% NB if natbib_citations = false, then the acknowledgements and references sections can be divided into two columns by manually wrapping them in \begin{multicols}{2} and \end{multicols} in the tex file that pandoc generates. Then recompile the tex file in your TeX compiler of choice.
 
 \end{document}
