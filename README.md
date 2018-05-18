@@ -12,7 +12,7 @@ Please keep in mind this package is unofficial and not associated or endorsed in
 
 Download the package `devtools`, if you don't have it already.
 
-Install the package in the R console with `devtools::install_github("jaydenm-c/CLtemplate")`
+Install the package in the R console with `devtools::install_github("JaydenM-C/CLtemplate")`
 
 When opening a new R Markdown document in RStudio via `New file > R Markdown...`, the regular dialogue box will pop up. Navigate to `From template`, and you should see the option to select a template called `Computational Linguistics journal`. If you've just installed the package, you may need to restart RStudio before it will appear in the list.
 
@@ -32,7 +32,7 @@ The biggest difficulty I have found with producing CL style documents in R Markd
 
 The most straightforward option would be to insert a raw LaTeX command `\starttwocolumn` in the body of the markdown document, before acknowledgements and references (this is the same command used in the TeX file for the [CLV3 Class File Manual](http://cljournal.org/Docs/COLI-manual3.pdf)). Unfortunately, this command isn't recognised by R Markdown for some reason. Manual insertion of `\starttwocolumn` in the TeX file produced by Pandoc after compiling seems to produce undesirable results as well.
 
-An alternative is to use the `multicol` package to create a two-column environment in the R Markdown document, using `\begin{multicols}{2}` and `\end{mulitcols}`. However, anything inside this environment will be interpreted as raw LaTeX, so you won't be able to use any markdown commands nor specify the placement of your bibliography with the usual R Markdown workaround (inserting a line of raw HTML, ...).
+An alternative is to use the `multicol` package to create a two-column environment in the R Markdown document, using `\begin{multicols}{2}` and `\end{mulitcols}`. However, anything inside this environment will be interpreted as raw LaTeX, so you won't be able to use any markdown commands nor specify the placement of your bibliography with the usual R Markdown workaround (inserting a line of raw HTML, `<div id="refs"></div>)`.
 
 This leaves two options:
 
@@ -52,14 +52,16 @@ If you're really keen to use regular R Markdown-style commands for in-text citat
 2. Use regular R Markdown for all your in-text citations. Do not use any raw LaTeX commands for in-text citations.
 3. Add `# Acknowledgements` and `# References` headers to the bottom of the R Markdown document. Insert any acknowledgements here, in the body of the document, *not* in the YAML header (leave the YAML field blank).
 4. You now have two choices:
-  - 4a. Easy but incorrect formatting (might be suitable for a draft, for example): Just insert the raw LaTeX command `\twocolumn` on its own line, above the Acknowledgements header. This will produce acknowledgements and references in a two column format, however it will also insert a page break between the end of the article and start of the acknowlegements---this looks fine enough, but it is not the correct *Computational Linguistics* style.
-  - 4b. Hacky but correct formatting: Knit the document as-is. Then, open up the resulting .tex file in your text editor of choice. Find the acknowledgements and references sections and insert a line containing `\begin{multicols}{2}` above and a line containing `\end{mulitcols}` after these sections. Finally, recompile the .tex file in your TeX compiler of choice (ShareLaTeX, TeXworks, etc.).
+..1. Easy but incorrect formatting (might be suitable for a draft, for example): Just insert the raw LaTeX command `\twocolumn` on its own line, above the Acknowledgements header. This will produce acknowledgements and references in a two column format, however it will also insert a page break between the end of the article and start of the acknowlegements---this looks fine enough, but it is not the correct *Computational Linguistics* style.
+..2. Hacky but correct formatting: Knit the document as-is. Then, open up the resulting .tex file in your text editor of choice. Find the acknowledgements and references sections and insert a line containing `\begin{multicols}{2}` above and a line containing `\end{mulitcols}` after these sections. Finally, recompile the .tex file in your TeX compiler of choice (ShareLaTeX, TeXworks, etc.).
+
+If you have a better solution, please open an 'issue' and propose it!
 
 # In the event of problems
 
 I expect this template will work great until it doesn't. If you get stuck, you can post an issue, but your best bet may be the following:
 
 1. Fork this repository to create your own copy of the package, using the fork button on the top right of this page.
-2. Dig into the file cl-template.tex and see if you can modify it in a way that suits your needs. You may wish to modify the name of the template in the `template.yaml` file.
+2. Dig into the file `cl-template.tex` and see if you can modify it in a way that suits your needs. You may wish to modify the name of the template in the `template.yaml` file.
 
 For an overview of R Markdown templates, see [https://rmarkdown.rstudio.com/developer_document_templates.html]. I also found [this tutorial](http://ismayc.github.io/ecots2k16/template_pkg/) helpful. [This section](http://pandoc.org/MANUAL.html#using-variables-in-templates) of the Pandoc manual was also helpful for getting my head around how LaTeX templates for Pandoc work.
