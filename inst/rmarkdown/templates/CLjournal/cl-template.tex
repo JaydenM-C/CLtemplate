@@ -23,6 +23,10 @@ $if(issue)$
 \issue{$issue.volume$}{$issue.number$}{$issue.year$}
 $endif$
 
+$if(history_dates)$
+\historydates{$history_dates$}
+$endif$
+
 % Document head
 $if(document_head)$
   \dochead{$document_head$}
