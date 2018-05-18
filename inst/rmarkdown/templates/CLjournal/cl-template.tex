@@ -75,7 +75,6 @@ $body$
 
 $if(natbib_citations)$
 \begin{multicols}{2}
-$endif$
 
 $if(acknowledgements)$
 \section*{Acknowledgements}\label{acknowledgements}
@@ -83,13 +82,9 @@ $if(acknowledgements)$
 $acknowledgements$
 $endif$
 
-$if(natbib_citations)$
 \bibliography{$bibliography$}
-\end{multicols}
-$else$
-\section*{References}\label{references}
-\addcontentsline{toc}{section}{Acknowledgements}
 
+\end{multicols}
 $endif$
 
 % NB if natbib_citations = false, then the acknowledgements and references sections can be divided into two columns by manually wrapping them in \begin{multicols}{2} and \end{multicols} in the tex file that pandoc generates. Then recompile the tex file in your TeX compiler of choice.

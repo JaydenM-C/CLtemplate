@@ -24,6 +24,9 @@ author:
 running_title: CL Template
 running_author: Lastnameonly
 
+abstract: This is a template for the `CLV3` style used by the journal _Computational Linguistics_. Place here an informative abstract of approximately 150-250 words.
+acknowledgements: 
+
 output: 
   pdf_document:
     template:
@@ -34,9 +37,6 @@ bibliography:
 biblio-style: compling.bst
 natbib_citations: true # if false, consider uncommenting 'link-citations: yes' below. 
 #link-citations: yes
-
-abstract: This is a template for the `CLV3` style used by the journal _Computational Linguistics_. Place here an informative abstract of approximately 150-250 words.
-acknowledgements: 
 ---
 
 # Introduction
