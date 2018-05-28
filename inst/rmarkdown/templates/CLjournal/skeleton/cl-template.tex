@@ -51,14 +51,11 @@ $endif$
 $for(author)$
   $if(author.contact_address)$
     \author{$author.name$\thanks{$author.contact_address$}}
-    $if(author.affiliation)$
-      \affil{$author.affiliation$}
-    $endif$
   $else$
-    \author{$author.name$}
-    $if(author.affiliation)$
-      \affil{$author.affiliation$}
-    $endif$
+    \author{$author.name$\thanks{}}
+  $endif$
+  $if(author.affiliation)$
+    \affil{$author.affiliation$}
   $endif$
 $endfor$
 
@@ -72,6 +69,7 @@ $endif$
 
 $body$
 
+$if(bibliography)$
 $if(natbib_citations)$
 \begin{multicols}{2}
 
@@ -84,6 +82,13 @@ $endif$
 \bibliography{$bibliography$}
 
 \end{multicols}
+$endif$
+$else$
+$if(acknowledgements)$
+\section*{Acknowledgements}\label{acknowledgements}
+\addcontentsline{toc}{section}{Acknowledgements}
+$acknowledgements$
+$endif$
 $endif$
 
 \end{document}
