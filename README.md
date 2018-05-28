@@ -22,9 +22,11 @@ The Association for Computational Linguistics supplies a `CLV3` LaTeX document c
 
 For a description of each variable, see the [CLV3 Class File Manual](http://cljournal.org/Docs/COLI-manual3.pdf). Of particular note is the first variable, `CL_style`. This is where class options for the CLV3 optionally can be specified. It can be left blank for a standard article style. Other options are *bookreview, brief, discussion, pubrec, shortpaper* and *manuscript*. *manuscript* can be used in conjunction with the others, for example `shortpaper,manuscript`. Again, see the [manual](http://cljournal.org/Docs/COLI-manual3.pdf) for a full description of these options.
 
-One additional, non-optional step is to specify the path to a bibliography file in .bib format. Note that the .bib extension must be included in the YAML header (unlike the LaTeX command `\bibliography{}` where the extension is optional). So `bibliography: references.bib` will work, but `bibliography: references` will not.
+One additional step is to specify the path to a bibliography file in .bib format. Note that the .bib extension must be included in the YAML header (unlike the LaTeX command `\bibliography{}` where the extension is optional). So `bibliography: references.bib` will work, but `bibliography: references` will not.
 
 After filling in the appropriate details in the YAML header, the main body of the document can be written up in the usual R Markdown way. Be sure to consult the *Computational Linguistics* [submission guidelines](http://cljournal.org/submissions.html) and [style guidelines](http://cljournal.org/style.html).
+
+_One quirk:_ Currently, if you do not specify any `contact_details` for an author, the document should still compile successfully, but it will add an asterisk by the author's name and insert a blank footnote where the contact details would have gone. See [this issue](https://github.com/JaydenM-C/CLtemplate/issues/1) for details.
 
 # Referencing and acknowledgements (important!)
 
