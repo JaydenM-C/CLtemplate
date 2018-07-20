@@ -19,6 +19,10 @@ $endif$
 \usepackage{natbib}
 \bibliographystyle{compling}
 
+$for(header-includes)$
+$header-includes$
+$endfor$
+
 $if(issue)$
 \issue{$issue.volume$}{$issue.number$}{$issue.year$}
 $endif$
